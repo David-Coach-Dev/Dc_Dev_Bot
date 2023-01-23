@@ -1,0 +1,12 @@
+{
+  "avatar":{
+    "title":"Your registered Discord avatar",
+    "objective":"In Discord the user {username} his avatar is :",
+    "footer": "Requested by  {username}"
+  },
+  "dc": {
+    "title":"Dc Dev -> Developer 👨‍💻",
+    "msn": "Systems Engineer - software and web developer - React.js - Node.js - JavaScript - TypeScript - Php - Sql - NoSql - MERN - PERM - WAMP - WAPP - Api Rest Full - Discord bot - Socket.io - UI - UX.\n\n Portfolio:  https://dcdev.tk",
+    "footer": "Answer in : {time} ms.\nRequested by {username}.\n"
+  }
+}
