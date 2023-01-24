@@ -3,7 +3,7 @@ const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const { clientId, guildId, token } = require("../Config/config.json");
 
-const rest = new REST({ version: "10" }).setToken(token);
+const rest = new REST({ version: "10" }).setToken(process.env.token || token);
 
 async function createSlash() {
   try {
@@ -16,9 +16,15 @@ async function createSlash() {
         commands.push(command.data.toJSON());
       }
     });
-    await rest.put(Routes.applicationCommands(clientId, guildId), {
-      body: commands,
-    });
+    await rest.put(
+      Routes.applicationCommands(
+        process.env.clientId || clientId,
+        process.env.guildId || guildId
+      ),
+      {
+        body: commands,
+      }
+    );
     console.log("(/) commands en linea en Bot Dc Dev.");
   } catch (error) {
     console.error(error);

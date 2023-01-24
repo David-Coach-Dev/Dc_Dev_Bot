@@ -15,7 +15,7 @@ module.exports = {
     const user = interaction.options.getUser("user");
     if (user) {
       const embed = new EmbedBuilder()
-        .setColor(config.defaultSucceedColor)
+        .setColor(process.env.defaultSucceedColor || config.defaultSucceedColor)
         .setTitle(client.languages.__('avatar.title'))
         .setDescription(
           client.languages.__mf('avatar.objective', { username: user.username })
@@ -31,10 +31,10 @@ module.exports = {
       return interaction.reply({ embeds: [embed] });
     } else {
       const embed = new EmbedBuilder()
-        .setColor(config.defaultErrorColor)
-        .setTitle(client.languages.__('avatar.title'))
+        .setColor(process.env.defaultErrorColor || config.defaultErrorColor)
+        .setTitle(client.languages.__("avatar.title"))
         .setDescription(
-          client.languages.__mf('avatar.objective', {
+          client.languages.__mf("avatar.objective", {
             username: interaction.user.username,
           })
         )
@@ -42,7 +42,7 @@ module.exports = {
           interaction.user.displayAvatarURL({ dynamic: true, size: 4096 })
         )
         .setFooter({
-          text: client.languages.__mf('avatar.footer', {
+          text: client.languages.__mf("avatar.footer", {
             username: interaction.user.username,
           }),
           iconURL: interaction.user.displayAvatarURL({ dynamic: true }),
