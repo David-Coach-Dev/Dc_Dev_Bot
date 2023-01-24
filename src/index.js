@@ -9,7 +9,7 @@ const server = http.createServer(app);
 //settings
 app.set("port",  p);
 //middleware
-require("./Cargar/bot");
+require(join(__dirname, "./Cargar/bot.js"));
 
 //routes
 

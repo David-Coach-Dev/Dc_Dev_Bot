@@ -7,7 +7,6 @@ const {
 const { join } = require("path");
 require("dotenv").config({ path: join(__dirname, "../config/.env") });
 const { setInterval } = require("timers");
-
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -16,46 +15,47 @@ const client = new Client({
     GatewayIntentBits.MessageContent,
   ],
 });
+export default (() => {
+  client.commands = new Collection();
+  client.languages = require("i18n");
+  client.languages.configure({
+    locales: ["es", "en"],
+    directory: "./src/languages",
+    defaultLocale: "es",
+    objectNotation: true,
+    register: global,
+    logWarnFn: function (msg) {
+      console.warn("WARNING", msg);
+    },
+    logErrorFn: function (msg) {
+      console.error("ERROR", msg);
+    },
+    missingKeyFn: function (locale, value) {
+      return value;
+    },
+    mustacheConfig: {
+      tags: ["{{", "}}"],
+      disable: false,
+    },
+  });
+  client.languages.setLocale("es");
 
-client.commands = new Collection();
-client.languages = require("i18n");
-client.languages.configure({
-  locales: ["es", "en"],
-  directory: "./src/languages",
-  defaultLocale: "es",
-  objectNotation: true,
-  register: global,
-  logWarnFn: function (msg) {
-    console.warn("WARNING", msg);
-  },
-  logErrorFn: function (msg) {
-    console.error("ERROR", msg);
-  },
-  missingKeyFn: function (locale, value) {
-    return value;
-  },
-  mustacheConfig: {
-    tags: ["{{", "}}"],
-    disable: false,
-  },
-});
-client.languages.setLocale("es");
+  setInterval(function () {
+    updateStatus();
+  }, 60000);
 
-setInterval(function () {
-  updateStatus();
-}, 60000);
-
-async function updateStatus() {
-  const guidNum = client.guilds.cache.size;
-  const memberNum = client.guilds.cache.reduce(
-    (prev, guild) => prev + guild.memberCount,
-    0
-  );
-  await client.user.setActivity(
-    `${guidNum} servidores y ${memberNum} miembros`,
-    { type: "LISTENING" }
-  );
-}
-require("../handlers/events.js")(client);
-require("../handlers/commands.js")(client);
-client.login(process.env.TOKEN);
+  async function updateStatus() {
+    const guidNum = client.guilds.cache.size;
+    const memberNum = client.guilds.cache.reduce(
+      (prev, guild) => prev + guild.memberCount,
+      0
+    );
+    await client.user.setActivity(
+      `${guidNum} servidores y ${memberNum} miembros`,
+      { type: "LISTENING" }
+    );
+  }
+  require("../handlers/events.js")(client);
+  require("../handlers/commands.js")(client);
+  client.login(process.env.TOKEN);
+})(process.env.TOKEN);
