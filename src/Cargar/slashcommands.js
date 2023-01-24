@@ -2,7 +2,7 @@ const fs = require("fs");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const { join } = require("path");
-require("dotenv").config({ path: join(__dirname, "../config/.env") });
+require("dotenv").config();
 const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 
 async function createSlash() {
