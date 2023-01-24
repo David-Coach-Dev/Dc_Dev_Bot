@@ -4,7 +4,13 @@ const {
   GatewayIntentBits,
   Collection,
 } = require("discord.js");
-const { token } = require("../config/config.json" || "../config/config.template.json");
+const { join } = require("path");
+
+require("dotenv").config({ path: join(__dirname, "../config/.env") });
+
+const config = require("../config/config.template.json");
+const token = (config.token || process.env.TOKEN);
+console.log(token);
 const { setInterval } = require("timers");
 
 const client = new Client({
