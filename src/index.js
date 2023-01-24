@@ -1,8 +1,11 @@
 const express = require("express");
 const http = require("http");
+const { join } = require("path");
+
+require("dotenv").config({ path: join(__dirname, "../config/.env") });
 //initialize
 const app = express();
-const p = 3000;
+const p = process.env.PORT || 3000;
 const server = http.createServer(app);
 //settings
 app.set("port",  p);

@@ -1,9 +1,9 @@
 const fs = require("fs");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
-//const { clientId, guildId, token } = require("../Config/config.json");
-
-const rest = new REST({ version: "10" }).setToken(process.env.token || token);
+const { join } = require("path");
+require("dotenv").config({ path: join(__dirname, "../config/.env") });
+const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 
 async function createSlash() {
   try {
@@ -18,8 +18,8 @@ async function createSlash() {
     });
     await rest.put(
       Routes.applicationCommands(
-        process.env.clientId || clientId,
-        process.env.guildId || guildId
+        process.env.CLIENT_ID,
+        process.env.GUILD_ID
       ),
       {
         body: commands,

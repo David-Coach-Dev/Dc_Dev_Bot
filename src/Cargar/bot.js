@@ -5,12 +5,7 @@ const {
   Collection,
 } = require("discord.js");
 const { join } = require("path");
-
 require("dotenv").config({ path: join(__dirname, "../config/.env") });
-
-const config = require("../config/config.template.json");
-const token = (config.token || process.env.TOKEN);
-console.log(token);
 const { setInterval } = require("timers");
 
 const client = new Client({
@@ -63,4 +58,4 @@ async function updateStatus() {
 }
 require("../handlers/events.js")(client);
 require("../handlers/commands.js")(client);
-client.login(token);
+client.login(process.env.TOKEN);
