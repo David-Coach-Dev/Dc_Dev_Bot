@@ -58,4 +58,4 @@ async function updateStatus() {
 }
 require("../handlers/events.js")(client);
 require("../handlers/commands.js")(client);
-client.login(config.token || process.env.token);
+client.login(process.env.token || config.token);
