@@ -40,7 +40,7 @@ client.languages.configure({
     disable: false,
   },
 });
-client.languages.setLocale("en");
+client.languages.setLocale("es");
 
 setInterval(function () {
   updateStatus();
