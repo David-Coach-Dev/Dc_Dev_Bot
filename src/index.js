@@ -5,11 +5,10 @@ require("dotenv").config({ path: join(__dirname, "../config/.env") });
 //initialize
 const app = express();
 const p = process.env.PORT || 3000;
-const server = http.createServer(app);
 //settings
 app.set("port",  p);
 //middleware
-require(join(__dirname, "./Cargar/bot.js"));
+require("./src/Cargar/bot.js");
 
 //routes
 
