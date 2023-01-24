@@ -25,4 +25,5 @@ dist-ssr
 *.sln
 *.sw?
 .env/*
-src/config
+src/config/.env
+src/config/config.json

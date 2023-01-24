@@ -21,7 +21,7 @@ client.commands = new Collection();
 client.languages = require("i18n");
 client.languages.configure({
   locales: ["es", "en"],
-  directory: join(__dirname, "languages"),
+  directory: "./src/languages",
   defaultLocale: "es",
   objectNotation: true,
   register: global,
@@ -58,4 +58,4 @@ async function updateStatus() {
 }
 require("../handlers/events.js")(client);
 require("../handlers/commands.js")(client);
-client.login(config.token);
+client.login(config.token || process.env.token);
