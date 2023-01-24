@@ -58,4 +58,4 @@ export default (() => {
   require("../handlers/events.js")(client);
   require("../handlers/commands.js")(client);
   client.login(process.env.TOKEN);
-})(process.env.TOKEN);
+})();
