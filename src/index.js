@@ -7,9 +7,9 @@ require("dotenv").config({ path: join(__dirname, "../config/.env") });
 const app = express();
 const p = process.env.PORT || 3000;
 //settings
-app.set("port",  p);
+app.set("port", p);
 //middleware
-require("./Cargar/bot");
+require(__dirname + "/Cargar/bot");
 
 //routes
 
@@ -17,5 +17,5 @@ require("./Cargar/bot");
 app.use(express.static("public"));
 //starting server
 server.listen(app.get("port"), () => {
-  console.log("server on port ", p, " http://localhost:"+p);
+  console.log("server on port ", p, " http://localhost:" + p);
 });

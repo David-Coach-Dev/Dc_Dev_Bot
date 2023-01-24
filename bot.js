@@ -5,8 +5,9 @@ const {
   Collection,
 } = require("discord.js");
 const { join } = require("path");
-require("dotenv").config({ path: join(__dirname, "../config/.env") });
+require("dotenv").config();
 const { setInterval } = require("timers");
+export default (() => {
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -15,7 +16,6 @@ const client = new Client({
     GatewayIntentBits.MessageContent,
   ],
 });
-export default (() => {
   client.commands = new Collection();
   client.languages = require("i18n");
   client.languages.configure({
@@ -55,7 +55,7 @@ export default (() => {
       { type: "LISTENING" }
     );
   }
-  require("../handlers/events.js")(client);
-  require("../handlers/commands.js")(client);
+  require("./src/handlers/events.js")(client);
+  require("./src/handlers/commands.js")(client);
   client.login(process.env.TOKEN);
 })();
