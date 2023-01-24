@@ -4,21 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.js",
-    "start": "node ./src/index.js"
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src -d dist --copy-files",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-  "@discordjs/builders": "^1.4.0",
-  "@discordjs/rest": "^1.5.0",
-  "discord.js": "^14.7.1",
-  "dotenv": "^16.0.3",
-  "express": "^4.18.2",
-  "fs": "^0.0.1-security",
-  "i18n": "^0.15.1",
-  "nodemon": "^2.0.20",
-  "notenv": "^2.0.3"
+    "@discordjs/builders": "^1.4.0",
+    "@discordjs/rest": "^1.5.0",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "i18n": "^0.15.1",
+    "@babel/runtime": "^7.20.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
+    "@babel/node": "^7.20.7",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "nodemon": "^2.0.20"
   }
 }

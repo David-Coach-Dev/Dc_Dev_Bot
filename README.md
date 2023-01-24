@@ -1,4 +1,4 @@
-<h1 align="center">Dc Dev.</h1>
+kw<h1 align="center">Dc Dev.</h1>
 <p align="center">
 App para compartir cursos y libros a la comunidad.
 </p>
@@ -10,7 +10,7 @@ App para compartir cursos y libros a la comunidad.
   <img src="https://vitejs.dev/logo.svg" alt="Vite" width="50" height="50"/>
    - Vite.</a>
   <br><br>
-   <a href="https://reactnative.dev" target="_blank" rel="React" >
+   <a href="https://reactnative.dev" target="_blank" rel="React" >kw
   <img src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg" alt="react native" width="50" height="50"/>
    - React.</a>
   <br><br>
