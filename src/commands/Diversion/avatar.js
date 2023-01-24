@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { EmbedBuilder } = require("discord.js");
 const { join } = require("path");
-require("dotenv").config({ path: join(__dirname, "../config/.env") });
+require("dotenv").config();
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("avatar")
