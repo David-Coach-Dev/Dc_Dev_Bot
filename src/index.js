@@ -1,7 +1,6 @@
 const express = require("express");
 const http = require("http");
 const { join } = require("path");
-
 require("dotenv").config({ path: join(__dirname, "../config/.env") });
 //initialize
 const app = express();
