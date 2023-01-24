@@ -4,7 +4,7 @@ const {
   GatewayIntentBits,
   Collection,
 } = require("discord.js");
-const config = require("../config/config.json");
+//const {token} = require("../config/config.json");
 const { join } = require("path");
 const { setInterval } = require("timers");
 
@@ -58,4 +58,4 @@ async function updateStatus() {
 }
 require("../handlers/events.js")(client);
 require("../handlers/commands.js")(client);
-client.login(process.env.token || config.token);
+client.login(process.env.token /*|| token*/);
