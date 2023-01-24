@@ -7,14 +7,14 @@ const app = express();
 const p = process.env.PORT || 3000;
 const server = http.createServer(app);
 //settings
-server.set("port",  p);
+app.set("port",  p);
 //middleware
 require("./Cargar/bot");
 
 //routes
 
 //static files
-server.use(express.static("public"));
+app.use(express.static("public"));
 //starting server
 server.listen(app.get("port"), () => {
   console.log("server on port ", p, " http://localhost:"+p);
