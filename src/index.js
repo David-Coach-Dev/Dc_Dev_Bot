@@ -1,4 +1,5 @@
 require('https').createServer((req, res) => res.end('Dc Dev Bot En Linea...')).listen(3000);
+app.use(express.static("public"));
 const {
   Client,
   Intents,
